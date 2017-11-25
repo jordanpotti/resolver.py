@@ -16,5 +16,5 @@ with open(sys.argv[1],"r") as text:
                                 print resolved
                                 with open(sys.argv[1]+".txt","a") as resolved_list:
                                         resolved_list.write(resolved+"\n")
-                except:
+                 except:
                         print("Cannot resolve " +line)
