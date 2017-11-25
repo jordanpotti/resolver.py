@@ -7,11 +7,14 @@ if len(sys.argv) != 2:
 s = set()
 with open(sys.argv[1],"r") as text:
         for line in text:
-                if ('abcdefghijklmnopqrstuvwxyz') not in line:
-                        resolved = socket.getfqdn(line)
-                        print resolved
-                else:
-                        resolved = socket.gethostbyname(line.strip())
-                        print resolved
-                        with open(sys.argv[1]+".txt","a") as resolved_list:
-                                resolved_list.write(resolved+"\n")
+                try:
+                        if ('abcdefghijklmnopqrstuvwxyz') not in line:
+                                resolved = socket.getfqdn(line)
+                                print resolved
+                        else:
+                                resolved = socket.gethostbyname(line.strip())
+                                print resolved
+                                with open(sys.argv[1]+".txt","a") as resolved_list:
+                                        resolved_list.write(resolved+"\n")
+                except:
+                        print("Cannot resolve " +line)
